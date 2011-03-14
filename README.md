@@ -8,8 +8,8 @@ This is a step-by-step guide to set up a new SBT project from scratch with Scala
 
 ## Creating new SBT project
 
-Execute the followin commands in a terminal window:
-> mkdir test-doodling
-> cd test-doodling
-> sbt
+Execute the following commands in a terminal window:
+    mkdir test-doodling
+    cd test-doodling
+    sbt
 
