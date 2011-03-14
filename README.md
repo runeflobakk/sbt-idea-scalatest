@@ -6,7 +6,7 @@ This is a step-by-step guide to set up a new SBT project from scratch with Scala
 
 * [Scala, at least version 2.8.1](http://www.scala-lang.org/) 
 * [SBT](http://code.google.com/p/simple-build-tool/)
-* [IntelliJ IDEA, any version](http://www.jetbrains.com/idea/download/)
+* [IntelliJ IDEA, any version with Scala and SBT plugin installed](http://www.jetbrains.com/idea/download/)
 
 
 
@@ -27,4 +27,49 @@ Provide some sensible values for the prompts. Obviously say *y* to the first que
     Scala version [2.7.7]: 2.8.1
     sbt version [0.7.4]: 
 
-Wait for SBT to create the project, and after a few seconds you should be greeted with a `>` prompt, ready to accept SBT commands.
+Wait for SBT to create the project, and after a few seconds you should be greeted with a `>` prompt, ready to accept SBT commands. For instance,
+you can type `test` to compile and test your project. Of course, there will be no code to compile, nor tests to run, but the build lifecycle will
+run and hopefully print `[success] Successful.` at the end.
+
+
+
+IDEA support
+------------
+
+To enable SBT to create project files for IDEA, we are going to install [sbt-idea](https://github.com/mpeltonen/sbt-idea/) as a SBT processor.
+This will make the `idea` command globally available for all SBT projects for the current user. It is possible to include sbt-idea as a plugin
+for the project, but it makes more sense to install it as a processor to avoid IDE-specific settings in the project. It will also be a one-time
+task when installed as a processor.
+
+At the SBT prompt, execute the following (be sure to include the leading asterisks):
+    *sbtIdeaRepo at http://mpeltonen.github.com/maven/
+    *idea is com.github.mpeltonen sbt-idea-processor 0.3.0
+    ...
+    update
+    ...
+    idea
+
+The last `idea` command will generate project files for IDEA. When it is done, open up IDEA, select "Open project", and find the folder for the
+project. You should see the familiar src/main and src/test folders, and a project folder which is where SBT keeps its project definition files.
+
+If you have the IDEA SBT plugin correctly installed, you should see a SBT Console button at the down-left. This enables you to run SBT commands
+directly from your IDE. To test it, you can open it, click the green "Play" button to launch an SBT session, and run the same `test` command as
+you did earlier. It should produce the same output with the `[success] Successful.` at the end as you've already seen.
+
+
+
+
+Testing with Scalatest
+------------------------
+
+To start writing tests, we must specify a dependency to the testing framework we'd like to use. For this guide we will use
+[ScalaTest](http://www.scalatest.org). So far, SBT has used a default project, as we have yet to create a project definition. SBT projects are
+defined using a regular Scala class implementing `sbt.Project`, usually by extending `sbt.DefaultProject`, in the `project/build` folder.
+
+In IDEA, create the "build" folder inside the "project" folder, and then create a new Scala class called TestDoodlingProject with this content:
+    import sbt._
+    class TestDoodlingProject(info: ProjectInfo) extends DefaultProject(info) {
+      val scalatest = "org.scalatest" % "scalatest" % "1.3" % "test"
+      val junit = "junit" % "junit" % "4.8.1" % "test"
+      val junitInterface = "com.novocode" % "junit-interface" % "0.5" % "test"
+    }
