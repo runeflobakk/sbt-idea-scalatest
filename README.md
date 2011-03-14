@@ -4,4 +4,12 @@ This is a step-by-step guide to set up a new SBT project from scratch with Scala
 
 * [Scala, at least version 2.8.1](http://www.scala-lang.org/) 
 * [SBT](http://code.google.com/p/simple-build-tool/)
- 
+* [IntelliJ IDEA, any version](http://www.jetbrains.com/idea/download/)
+
+## Creating new SBT project
+
+Execute the followin commands in a terminal window:
+> mkdir test-doodling
+> cd test-doodling
+> sbt
+
