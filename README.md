@@ -26,3 +26,5 @@ Provide some sensible values for the prompts. Obviously say *y* to the first que
     Version [1.0]: 
     Scala version [2.7.7]: 2.8.1
     sbt version [0.7.4]: 
+
+Wait for SBT to create the project, and after a few seconds you should be greeted with a `>` prompt, ready to accept SBT commands.
