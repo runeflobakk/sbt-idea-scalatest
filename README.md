@@ -73,3 +73,20 @@ In IDEA, create the "build" folder inside the "project" folder, and then create 
       val junit = "junit" % "junit" % "4.8.1" % "test"
       val junitInterface = "com.novocode" % "junit-interface" % "0.5" % "test"
     }
+
+This will get ScalaTest, JUnit, and lastly the interface which enables SBT to run JUnit-based tests.
+
+To activate these changes, switch to the SBT prompt (either in the SBT Console in IDEA or a terminal window), and run:
+    reload
+    update
+    idea
+
+Right-click the project root, select "Synchronize 'test-doodling'", choose to reload project and click OK. A `lib_managed` folder should now appear
+and contain 4 jar files for junit, junit-interface, scalatest and test-interface.
+
+In `src/test/scala` create a new Scala class called MyFirstScalaTest which extends AssertionsForJUnit. It should contain one method annotated with
+`org.junit.Test` where the method body only contains `assert(false)`. Run `test` in SBT and verify that MyFirstScalaTest is failing. Change to
+`assert(true)`, run `test` again and verify that you get `[info] All tests PASSED.` and a successful build.
+
+Create some test methods, either testing classes you create in `src/main/scala` or just tests doing asserts on dummy objects. Try the
+ShouldMatchersForJUnit trait as described [scalatest.org/getting_started_with_junit_4](http://scalatest.org/getting_started_with_junit_4)
