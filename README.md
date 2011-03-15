@@ -19,7 +19,7 @@ Execute the following commands in a terminal window:
     cd test-doodling
     sbt
 
-Provide some sensible values for the prompts. Obviously say *y* to the first question, and be sure to specify *2.8.2* as Scala version.
+Provide some sensible values for the prompts. Obviously say *y* to the first question, and be sure to specify *2.8.1* as Scala version.
     Project does not exist, create new project? (y/N/s) y
     Name: test-doodling
     Organization: bekk            
