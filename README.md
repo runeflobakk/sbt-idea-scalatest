@@ -100,6 +100,7 @@ Creating BDD specs
 See the page at [scalatest.org/getting_started_with_bdd](http://scalatest.org/getting_started_with_bdd). Use the BDD-style unit testing
 capabilities offered by your prefered base class; Spec, WordSpec or FlatSpec to start implementing an `Inventory` class. Inventory is a storage
 for anything you throw at it. So far it has only the following requirements:
+
 * when just instantiated it should be empty
 * when just instantiated it should not give anything back when asked to find an object of given class and String-id.
 
